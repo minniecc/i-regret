@@ -59,21 +59,6 @@
                   <span class="_pst-rlt _t-2px _ttf-upc" v-html="item.title"/>
                 </nuxt-link>
               </div>
-              <!-- <div v-if="item.submenu" class="dropdown _pst-asl-md">
-                
-                <div class="_dp-b _dp-n-md">
-                  <i class="fal fa-long-arrow-down fa-2x"/>
-                </div>
-                <ul>
-                  <li v-for="(list, j) in item.submenu" :key="j" class="_ttf-upc">
-                    <nuxt-link
-                      :to="localePath(list.path)"
-                      class="_cl-white-md _cl-pink hover-spacing -tpr _dp-ilb _dp-b-md _fs-4 _fs-5-md"
-                      v-html="list.title"
-                    />
-                  </li>
-                </ul>
-              </div>-->
             </li>
           </ul>
         </nav>
@@ -226,56 +211,6 @@ ul.nav {
         font-size: 175%;
       }
     }
-  }
-}
-
-.dropdown {
-  user-select: none !important;
-  outline: none !important;
-  visibility: hidden;
-  opacity: 0;
-  /* left: 0px; */
-  transition: left 0.5s, height 0.5s, visibility 0s,
-    opacity 1s cubic-bezier(0.19, 1, 0.22, 1);
-  height: 0;
-  overflow: hidden;
-  min-width: 200px;
-  z-index: 10 !important;
-  position: relative;
-  @media (max-width: $md - 1px) {
-    &::before {
-      content: "";
-    }
-    transition-delay: 0.2s;
-  }
-  @media (min-width: $md) {
-    padding-top: 24px;
-    left: calc(50% - 110px);
-    ul {
-      background-color: $default-color;
-      padding: 12px 16px;
-      border: 1px solid rgba(0, 0, 0, 0.05);
-      border-radius: 4px;
-      position: relative;
-      z-index: 9;
-      /* background: $default-color; */
-      &::before {
-        width: 0;
-        height: 0;
-        border-style: solid;
-        border-width: 0 10px 10px 10px;
-        border-color: transparent transparent $default-color transparent;
-        content: "";
-        position: absolute;
-        top: -10px;
-        left: calc(50% - 5px);
-      }
-    }
-  }
-  li {
-    margin: 12px 0px 12px 0px;
-    position: relative;
-    z-index: 1;
   }
 }
 

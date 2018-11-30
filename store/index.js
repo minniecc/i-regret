@@ -42,30 +42,30 @@ export const actions = {
     // await dispatch('api/getInitialData')
     const m = rootState.i18n.messages;
     const primaryMenu = [
-      {
-        title: "About",
-        path: {
-          name: "about"
-        }
-      },
-      {
-        title: "How it works",
-        path: {
-          name: "how"
-        }
-      },
-      {
-        title: "Other projects",
-        path: {
-          name: "death"
-        }
-      },
-      {
-        title: "Contact",
-        path: {
-          name: "contact"
-        }
-      }
+      // {
+      //   title: "About",
+      //   path: {
+      //     name: "about"
+      //   }
+      // },
+      // {
+      //   title: "How it works",
+      //   path: {
+      //     name: "how"
+      //   }
+      // },
+      // {
+      //   title: "Other projects",
+      //   path: {
+      //     name: "death"
+      //   }
+      // },
+      // {
+      //   title: "Contact",
+      //   path: {
+      //     name: "contact"
+      //   }
+      // }
     ];
     const footerMenu = primaryMenu;
 

@@ -9,7 +9,7 @@ Vue.use(VueFloatLabel)
 
 WebFont.load({
   google: {
-    families: ['Kanit&subset=thai']
+    families: ['Work sans']
   }
 })
 
