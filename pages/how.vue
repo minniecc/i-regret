@@ -1,41 +1,47 @@
 <template>
   <div class="container _col-12 _tal-ct">
     <div class="how col-12">
-      <h1>Death-related Projects</h1>
-      <p>about my topic breifly how did i come up with the topic etc Lorem ipsum, dolor sit amet consectetur adipisicing elit. Repellat inventore, enim illo earum ipsum suscipit perspiciatis voluptate eligendi accusantium assumenda rerum autem, voluptas aut officia maxime quas, animi fugiat qui!</p>
+      <h1>How it works</h1>
     </div>
     <!-- 1 -->
     <div class="row box col-lg-8 col-md-8 col-10 _dp-b">
-      <h2>Death's story</h2>
+      <h2>1. Add your regret</h2>
       <div class="col-12 pic pic1"></div>
       <div class="abouttext col-12 _tal-l">
-        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ad enim blanditiis facilis laboriosam sit sequi laudantium facere, ut provident impedit, deserunt, cum non accusantium quis odit omnis veniam voluptatem minus?</p>
+        <p>Click anywhere on the black area to start adding your regret. You can either add your name or remain anonymous.</p>
         <br>
-        <p>
-          Download the form
-          <a
-            style="color: white; text-decoration: underline;"
-            href="/pdf/death-story.pdf"
-            download
-          >here</a>.
-        </p>
       </div>
     </div>
     <!-- 2 -->
     <div class="row box col-lg-8 col-md-8 col-10 _dp-b">
-      <h2>Design your funeral</h2>
+      <h2>2. choose category</h2>
       <div class="col-12 pic pic2"></div>
       <div class="abouttext col-12 _tal-l">
-        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Facere vero eaque blanditiis animi quo numquam alias minus cupiditate! Totam fugit odit veritatis accusantium consequuntur officia itaque. Minima ipsum iusto facere!</p>
-        <br>
-        <p>
-          Try it
-          <a
-            style="color: white; text-decoration: underline;"
-            href="https://myfuneralpicture.firebaseapp.com/funeralpic2/"
-            target="_blank"
-          >here</a>.
-        </p>
+        <p>After entering your regret, do not forget to choose its category. Regrets are separated by colours so you can see which category people regret the most before they die or even while they are still living.</p>
+      </div>
+    </div>
+    <!-- 3 -->
+    <div class="row box col-lg-8 col-md-8 col-10 _dp-b">
+      <h2>3. Explore others regrets</h2>
+      <div class="col-12 pic pic3"></div>
+      <div class="abouttext col-12 _tal-l">
+        <p>You can explore other people regrets. See what people regret these days. Which category is the most common one? Do you share any same regrets with other? Is there any regret you used to have but not anymore and how did you deal with that?</p>
+      </div>
+    </div>
+    <!-- 4 -->
+    <div class="row box col-lg-8 col-md-8 col-10 _dp-b">
+      <h2>4. reflect on yourself</h2>
+      <div class="col-12 pic pic4"></div>
+      <div class="abouttext col-12 _tal-l">
+        <p>Once you have observed all the regrets, take a moment with yourself to think about how you are living your life. What you want to do and how to do it. Take action today. Reflect on yourself. Reflection is very important. It helps you find your place and know your values.</p>
+      </div>
+    </div>
+    <!-- 5 -->
+    <div class="row box col-lg-8 col-md-8 col-10 _dp-b">
+      <h2>5. Share this website</h2>
+      <div class="col-12 pic pic5"></div>
+      <div class="abouttext col-12 _tal-l">
+        <p>We need to be more self-awareness and stop wasting our time in this world. Let's spread this website to create awareness to your friends and family.</p>
       </div>
     </div>
   </div>
@@ -74,6 +80,24 @@ h2 {
     color: white;
     text-align: left;
   }
+  &:hover h2 {
+    color: #98c1d9;
+  }
+  &:hover .pic1 {
+    background-image: url("~assets/images/info/info_iregret-06.png");
+  }
+  &:hover .pic2 {
+    background-image: url("~assets/images/info/info_iregret-07.png");
+  }
+  &:hover .pic3 {
+    background-image: url("~assets/images/info/info_iregret-09.png");
+  }
+  &:hover .pic4 {
+    background-image: url("~assets/images/info/info_iregret-08.png");
+  }
+  &:hover .pic5 {
+    background-image: url("~assets/images/info/info_iregret-10.png");
+  }
 }
 
 .abouttext {
@@ -100,10 +124,19 @@ h2 {
 }
 
 .pic1 {
-  background-image: url("~assets/images/otherpic/death-story.png");
+  background-image: url("~assets/images/info/info_iregret-01.png");
 }
 .pic2 {
-  background-image: url("~assets/images/otherpic/death-story.png");
+  background-image: url("~assets/images/info/info_iregret-02.png");
+}
+.pic3 {
+  background-image: url("~assets/images/info/info_iregret-04.png");
+}
+.pic4 {
+  background-image: url("~assets/images/info/info_iregret-03.png");
+}
+.pic5 {
+  background-image: url("~assets/images/info/info_iregret-05.png");
 }
 </style>
 

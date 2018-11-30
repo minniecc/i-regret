@@ -2,6 +2,7 @@
   <div class="container _col-12 _tal-ct">
     <div class="how col-12">
       <h1>CONTACT</h1>
+      <!-- **** copy from portfolio -->
       <p>about my topic breifly how did i come up with the topic etc Lorem ipsum, dolor sit amet consectetur adipisicing elit. Repellat inventore, enim illo earum ipsum suscipit perspiciatis voluptate eligendi accusantium assumenda rerum autem, voluptas aut officia maxime quas, animi fugiat qui!</p>
     </div>
     <!-- 1 -->

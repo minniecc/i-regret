@@ -122,7 +122,7 @@ header {
   background: pink;
   background-size: contain;
   background-repeat: no-repeat;
-  background-image: url("~/assets/images/i-regret-logo-02.png");
+  background-image: url("~assets/images/i-regret-logo-white.png");
 }
 
 #extra-bar {

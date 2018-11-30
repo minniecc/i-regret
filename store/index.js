@@ -51,7 +51,7 @@ export const actions = {
       {
         title: "How it works",
         path: {
-          name: "about"
+          name: "how"
         }
       },
       {
