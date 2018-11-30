@@ -11,7 +11,7 @@ module.exports = {
    ** Headers of the page
    */
   head: {
-    title: `${pkg.title} – ${pkg.description}`,
+    title: `${pkg.title}`,
     meta: [
       {
         charset: "utf-8"

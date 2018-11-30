@@ -40,7 +40,8 @@
           <!-- REGRET TEXT INPUT -->
           <div class="form">
             <label for="textregret">I regret ...</label>
-            <input type="text" class="textregret" name="textregret">
+            <!-- <input type="text" class="textregret" name="textregret"> -->
+            <input type="text" maxlength="50" id="new" ng-model="post">
           </div>
 
           <!-- CATEGORY -->
@@ -57,7 +58,8 @@
           </div>
 
           <!-- BUTTON -->
-          <button onclick="mousedownAdd()" type="submit" name="Add">Add</button>
+          <button class="addNew" ng-click="postit(post)">Add</button>
+          <!-- <button onclick="mousedownAdd()" type="submit" name="Add">Add</button> -->
           <button type="reset" value="Reset">Reset</button>
           <!-- <button><nuxt-link to="/">Cancel</nuxt-link></button> -->
         </form>
@@ -389,4 +391,3 @@ button {
   }
 }
 </style>
-

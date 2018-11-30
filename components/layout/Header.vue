@@ -10,13 +10,34 @@
     <div class="container">
       <div class="menu-container">
         <!-- Branding -->
-        <nuxt-link id="branding" class="col-4" :to="localePath('index')"></nuxt-link>
+        <nuxt-link id="branding" class="_w-512px _bgs-ct _bgrp-nrp logo" :to="localePath('index')"></nuxt-link>
 
         <!-- Menu -->
         <nav
           :class="{'-show-mobile': $store.state.isMobileMenuActive}"
           class="_dp-f _fdrt-cl _h-72px _jtfct-spbtw"
         >
+          <!-- about -->
+          <nuxt-link to="/about">
+            <i class="fas fa-info-circle"></i>
+            About
+          </nuxt-link>
+          <!-- terms -->
+          <nuxt-link to="/how">
+            <i class="fas fa-question-circle"></i>
+            How it works
+          </nuxt-link>
+          <!-- Project -->
+          <nuxt-link to="/death">
+            <i class="fas fa-book-dead"></i>
+            Other Projects
+          </nuxt-link>
+          <!-- contact -->
+          <nuxt-link to="/contact">
+            <i class="fas fa-comment"></i>
+            Contact
+          </nuxt-link>
+
           <!-- Menu Items -->
           <ul class="nav _tal-ct _tal-l-md">
             <li
@@ -36,8 +57,8 @@
                   <span class="_pst-rlt _t-2px _ttf-upc" v-html="item.title"/>
                 </nuxt-link>
               </div>
-              <div v-if="item.submenu" class="dropdown _pst-asl-md">
-                <!-- [Mobile only] Down arrow -->
+              <!-- <div v-if="item.submenu" class="dropdown _pst-asl-md">
+                
                 <div class="_dp-b _dp-n-md">
                   <i class="fal fa-long-arrow-down fa-2x"/>
                 </div>
@@ -50,7 +71,7 @@
                     />
                   </li>
                 </ul>
-              </div>
+              </div>-->
             </li>
           </ul>
         </nav>
@@ -111,32 +132,34 @@ export default {
 }
 
 header {
-  /* @media (max-width: $md - 1px) {
-    padding: 0px 0px;
-  } */
-  // padding: 18px 0px;
-  background: #000;
-  color: white;
+  @media (max-width: $sm) {
+    padding: 16px 0px;
+  }
+  padding: 0px 0px;
 }
 
-#branding {
-  height: 80px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-size: contain;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-image: url("~assets/images/i-regret-logo-white.png");
+.logo {
+  height: 100px;
+  background-image: url("~assets/images/i-regret-logo-black.png");
 }
 
 #extra-bar {
   text-align: right;
+  margin-top: 10px;
   > div {
     display: inline-block;
-    margin: 0px 8px;
+    margin: 8px 8px;
     &:last-child {
       margin: 0px;
+    }
+  }
+  > a {
+    color: black;
+    font-family: "Work Sans", sans-serif;
+    // text-transform: uppercase;
+    margin-left: 20px;
+    &:hover {
+      color: #98c1d9;
     }
   }
 }
