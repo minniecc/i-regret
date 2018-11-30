@@ -30,18 +30,18 @@
         </div>
       </div>-->
       <div class="col col-lg-2 col-md-2 col-sm-2 col-2 _dp-b _mg-at _tal-ct popup">
-        <form method="get">
+        <form action="#">
           <!-- NAME INPUT -->
           <div class="form">
             <label for="name">Name</label>
-            <input type="name" id="name" placeholder="annonymous">
+            <input type="name" id="username" name="name" placeholder="annonymous">
           </div>
 
           <!-- REGRET TEXT INPUT -->
           <div class="form">
             <label for="textregret">I regret ...</label>
             <!-- <input type="text" class="textregret" name="textregret"> -->
-            <input type="text" maxlength="50" id="new" ng-model="post">
+            <input type="text" maxlength="50" id="regret" ng-model="post">
           </div>
 
           <!-- CATEGORY -->
@@ -124,9 +124,12 @@ export default {
       // restart();
     },
     mousedownAdd() {
-      // var regretText = window.prompt("Enter your regret");
-      // var name = ...
-      print(hey);
+      var name = document.getElementById("username").value;
+      var regretText = document.getElementById("regret").value;
+
+      console.log("hey");
+      console.log(name);
+      console.log(regretText);
     }
   },
   mounted() {
@@ -186,19 +189,40 @@ export default {
           .style("opacity", 0);
       }
 
-      function mousedownCanvas() {
-        var inputText = window.prompt("I regret");
-        // var inputText = textregret;
-        var point = d3.mouse(this),
-          node = {
-            x: point[0],
-            y: point[1],
-            text: "I regret " + inputText + " - Name"
-          },
-          n = nodes.push(node);
+      function mousedownCanvas(inputText) {
+        var point = d3.mouse(this);
+        (node = { x: point[0], y: point[1], text: inputText }),
+          (n = nodes.push(node));
 
         restart();
       }
+
+      function mousedownAdd() {
+        // var regretText = window.prompt("Enter your regret");
+        // var name = ...
+        var name = document.getElementById("username").value;
+        var regretText = document.getElementById("regret").value;
+
+        console.log("hey");
+        console.log(name);
+        console.log(regretText);
+
+        mousedownCanvas(name + " " + regreText);
+      }
+
+      // function mousedownCanvas() {
+      //   var inputText = window.prompt("I regret");
+      //   // var inputText = textregret;
+      //   var point = d3.mouse(this),
+      //     node = {
+      //       x: point[0],
+      //       y: point[1],
+      //       text: "I regret " + inputText + " - Name"
+      //     },
+      //     n = nodes.push(node);
+
+      //   restart();
+      // }
 
       function tick() {
         link
