@@ -1,43 +1,46 @@
 <template>
   <div class="container _col-12 _tal-ct">
-    <div class="how col-12">
-      <h1>CONTACT</h1>
-      <!-- **** copy from portfolio -->
-      <p>about my topic breifly how did i come up with the topic etc Lorem ipsum, dolor sit amet consectetur adipisicing elit. Repellat inventore, enim illo earum ipsum suscipit perspiciatis voluptate eligendi accusantium assumenda rerum autem, voluptas aut officia maxime quas, animi fugiat qui!</p>
+    <div class="feedback">
+      <h1>Give Feedback</h1>
+      <p>This website is a part of my thesis and I would love to hear from all of you.</p>
+      <p>Get in touch to give feedbacks on this website or share your story with me :)</p>
     </div>
-    <!-- 1 -->
-    <div class="row box col-lg-8 col-md-8 col-10 _dp-b">
-      <h2>Death's story</h2>
-      <div class="col-12 pic pic1"></div>
-      <div class="abouttext col-12 _tal-l">
-        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ad enim blanditiis facilis laboriosam sit sequi laudantium facere, ut provident impedit, deserunt, cum non accusantium quis odit omnis veniam voluptatem minus?</p>
-        <br>
-        <p>
-          Download the form
-          <a
-            style="color: white; text-decoration: underline;"
-            href="/pdf/death-story.pdf"
-            download
-          >here</a>.
-        </p>
-      </div>
+
+    <!-- comment form -->
+    <div class="row box col-lg-8 col-md-8 col-10 _mg-at _dp-b">
+      <form action="mailto:chantchanokch@gmail.com" method="post" enctype="text/plain">
+        <div class="bio-input">
+          <h2>Name</h2>
+          <input type="text" name="Name" placeholder="What should I call you?">
+        </div>
+        <div class="bio-input">
+          <h2>Email</h2>
+          <input type="text" name="Email" placeholder="Your Email">
+        </div>
+        <div class="bio-textarea">
+          <h2>Message</h2>
+          <textarea rows="3" name="Message" placeholder="Message"></textarea>
+        </div>
+        <div class="row _pd-12px">
+          <input class="bio-button _mg-at" type="submit" value="SEND">
+        </div>
+      </form>
     </div>
-    <!-- 2 -->
-    <div class="row box col-lg-8 col-md-8 col-10 _dp-b">
-      <h2>Design your funeral</h2>
-      <div class="col-12 pic pic2"></div>
-      <div class="abouttext col-12 _tal-l">
-        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Facere vero eaque blanditiis animi quo numquam alias minus cupiditate! Totam fugit odit veritatis accusantium consequuntur officia itaque. Minima ipsum iusto facere!</p>
-        <br>
-        <p>
-          Try it
-          <a
-            style="color: white; text-decoration: underline;"
-            href="https://myfuneralpicture.firebaseapp.com/funeralpic2/"
-            target="_blank"
-          >here</a>.
-        </p>
-      </div>
+
+    <!-- minnie social -->
+    <div class="row socialcontact col-lg-8 col-md-8 col-10 _dp-b _fs-3">
+      <a class="col-3" href="https://www.linkedin.com/in/minniecc/">
+        <i class="fab fa-linkedin-in"></i>
+      </a>
+      <a class="col-3" href="https://www.facebook.com/MINNIECHANTCHANOK">
+        <i class="fab fa-facebook-square"></i>
+      </a>
+      <a class="col-3" href="http://line.me/ti/p/~minniecc">
+        <i class="fab fa-line"></i>
+      </a>
+      <a class="col-3" href="mailto:chantchanokch@gmail.com?Subject=" target="_top">
+        <i class="far fa-envelope"></i>
+      </a>
     </div>
   </div>
 </template>
@@ -67,46 +70,32 @@ h2 {
   color: white;
 }
 
+.bio-button {
+  background-color: #98c1d9;
+  padding: 8px 20px;
+}
+
+.feedback {
+  padding-bottom: 50px;
+}
+
 .box {
   background-color: black;
   padding: 20px;
-  margin: 30px auto;
-  > p {
-    color: white;
-    text-align: left;
-  }
 }
 
-.abouttext {
-  margin: 10px auto;
-  > a {
+.socialcontact {
+  background: black;
+  text-align: center;
+  margin: 30px auto 50px auto;
+  padding: 10px;
+  & a {
     color: white;
-    text-align: left;
+    &:hover {
+      color: #98c1d9;
+    }
   }
-  > p {
-    color: white;
-    text-align: left;
-  }
-}
-
-.pic {
-  height: 300px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-size: contain;
-  background-position: center;
-  background-repeat: no-repeat;
-  transition: 1s;
-}
-
-.pic1 {
-  background-image: url("~assets/images/otherpic/death-story.png");
-}
-.pic2 {
-  background-image: url("~assets/images/otherpic/death-story.png");
 }
 </style>
-
 
 

@@ -10,7 +10,7 @@
     <div class="container">
       <div class="menu-container">
         <!-- Branding -->
-        <nuxt-link id="branding _h-126px" :to="localePath('index')"></nuxt-link>
+        <nuxt-link id="branding" class="col-4" :to="localePath('index')"></nuxt-link>
 
         <!-- Menu -->
         <nav
@@ -114,13 +114,18 @@ header {
   /* @media (max-width: $md - 1px) {
     padding: 0px 0px;
   } */
-  padding: 18px 0px;
+  // padding: 18px 0px;
   background: #000;
+  color: white;
 }
 
 #branding {
-  background: pink;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   background-size: contain;
+  background-position: center;
   background-repeat: no-repeat;
   background-image: url("~assets/images/i-regret-logo-white.png");
 }
