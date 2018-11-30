@@ -18,25 +18,27 @@
           class="_dp-f _fdrt-cl _h-72px _jtfct-spbtw"
         >
           <!-- about -->
-          <nuxt-link to="/about">
-            <i class="fas fa-info-circle"></i>
-            About
-          </nuxt-link>
-          <!-- terms -->
-          <nuxt-link to="/how">
-            <i class="fas fa-question-circle"></i>
-            How it works
-          </nuxt-link>
-          <!-- Project -->
-          <nuxt-link to="/death">
-            <i class="fas fa-book-dead"></i>
-            Other Projects
-          </nuxt-link>
-          <!-- contact -->
-          <nuxt-link to="/contact">
-            <i class="fas fa-comment"></i>
-            Contact
-          </nuxt-link>
+          <div id="extra-bar">
+            <nuxt-link to="/about">
+              <i class="fas fa-info-circle"></i>
+              About
+            </nuxt-link>
+            <!-- terms -->
+            <nuxt-link to="/how">
+              <i class="fas fa-question-circle"></i>
+              How it works
+            </nuxt-link>
+            <!-- Project -->
+            <nuxt-link to="/death">
+              <i class="fas fa-book-dead"></i>
+              Other Projects
+            </nuxt-link>
+            <!-- contact -->
+            <nuxt-link to="/contact">
+              <i class="fas fa-comment"></i>
+              Contact
+            </nuxt-link>
+          </div>
 
           <!-- Menu Items -->
           <ul class="nav _tal-ct _tal-l-md">
