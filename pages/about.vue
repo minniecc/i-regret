@@ -13,14 +13,15 @@
       <div class="abouttext col-12 _tal-l">
         <p>Have you ever made your own bucket list? What was on the list and how many have you checked off so far?</p>
         <br>
-        <p>research about most regret</p>
-        <p>Purpose of this website.</p>
+        <p>The regret categories you can find on the homepage are the most common regrets people have.</p>
+        <br>
+        <p>The purpose of this website is to make you re-think about how you are living your life.</p>
         <p>What if you die today, is there anything you wish you could have done?</p>
       </div>
     </div>
 
     <div class="row box col-lg-8 col-md-8 col-10 _dp-b">
-      <h2>GOOD DEATH</h2>
+      <h2>Death-Awareness</h2>
       <div class="abouttext col-12 _tal-l">
         <p>Have you ever wondered when you want to die? How long you want live your life?</p>
         <br>
