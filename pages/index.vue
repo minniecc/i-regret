@@ -21,7 +21,7 @@
           <div class="form">
             <label for="textregret">I regret ...</label>
             <!-- <input type="text" class="textregret" name="textregret"> -->
-            <input type="text" maxlength="100" id="regret" ng-model="post">
+            <input type="text" maxlength="140" id="regret" ng-model="post">
           </div>
 
           <!-- CATEGORY -->
