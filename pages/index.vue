@@ -9,28 +9,8 @@
     </div>
 
     <div class="row playarea">
-      <!-- <div class="col-lg-1 col-md-2 col-sm-2 col-2 _dp-b _mg-at toolsbar _tal-ct">
-
-        <div>
-          <a href>
-            <i class="fas fa-fw fa-lg fa-search"></i>
-          </a>
-          <div class="texttool">
-            <p>Search for Regret</p>
-          </div>
-        </div>
-
-        <div @click="mousedownCanvas()">
-          <a href>
-            <i class="fas fa-fw fa-lg fa-plus-circle"></i>
-          </a>
-          <div class="texttool">
-            <p>Confess your Regret</p>
-          </div>
-        </div>
-      </div>-->
       <div class="col col-lg-2 col-md-2 col-sm-2 col-2 _dp-b _mg-at _tal-ct popup">
-        <form action="#">
+        <form action="#" @submit.prevent>
           <!-- NAME INPUT -->
           <div class="form">
             <label for="name">Name</label>
@@ -49,7 +29,7 @@
             <label for="regretcategory">Category</label>
             <div class="bio-field -info">
               <div class="bio-select">
-                <select>
+                <select id="category">
                   <option disabled>Select dropdown</option>
                   <option v-for="(item, i) in regretCategories" :key="i">{{ item.title }}</option>
                 </select>
@@ -58,8 +38,7 @@
           </div>
 
           <!-- BUTTON -->
-          <button class="addNew" ng-click="postit(post)">Add</button>
-          <!-- <button onclick="mousedownAdd()" type="submit" name="Add">Add</button> -->
+          <button type="submit" id="add" name="Add">Add</button>
           <button type="reset" value="Reset">Reset</button>
           <!-- <button><nuxt-link to="/">Cancel</nuxt-link></button> -->
         </form>
@@ -114,24 +93,7 @@ export default {
     ]
   }),
 
-  methods: {
-    mousedownCanvas() {
-      var inputText = window.prompt("Enter your regret");
-      // var point = d3.mouse(this),
-      //   node = { x: point[0], y: point[1], text: inputText },
-      //   n = nodes.push(node);
-
-      // restart();
-    },
-    mousedownAdd() {
-      var name = document.getElementById("username").value;
-      var regretText = document.getElementById("regret").value;
-
-      console.log("hey");
-      console.log(name);
-      console.log(regretText);
-    }
-  },
+  methods: {},
   mounted() {
     if (process.browser) {
       /* SVG frame creation */
@@ -139,10 +101,7 @@ export default {
         height = 500,
         // color
         fill = d3.scale.category10();
-      // fill = regretCategories.item.color();
-
-      this.fill = d3.scale.category10();
-      // this.fill = regretCategories.item.color();
+      // fill = this.regretCategories.item.color();
 
       var tooltip = d3.select("#tooltip");
 
@@ -161,8 +120,9 @@ export default {
         .append("svg")
         .attr("width", width)
         .attr("height", height)
-        // .on("mousemove", mousemove)
         .on("mousedown", mousedownCanvas);
+
+      d3.select("#add").on("mousedown", mousedownAdd);
 
       var nodes = force.nodes(),
         links = force.links(),
@@ -189,40 +149,37 @@ export default {
           .style("opacity", 0);
       }
 
-      function mousedownCanvas(inputText) {
-        var point = d3.mouse(this);
-        (node = { x: point[0], y: point[1], text: inputText }),
-          (n = nodes.push(node));
+      function mousedownAdd() {
+        var name = document.getElementById("username").value;
+        var regretText = document.getElementById("regret").value;
+        var categoryText = document.getElementById("category");
+        var categoryIndex = categoryText.selectedIndex;
+
+        console.log(categoryText.value, categoryIndex);
+
+        var point = d3.mouse(this),
+          node = {
+            x: point[0],
+            y: point[1],
+            text: "I regret " + regretText + " - Name"
+          },
+          n = nodes.push(node);
+
+        renderResult(categoryIndex);
+      }
+
+      function mousedownCanvas() {
+        // var inputText = window.prompt("I regret");
+        var point = d3.mouse(this),
+          node = {
+            x: point[0],
+            y: point[1],
+            text: "I regret " + inputText + " - Name"
+          },
+          n = nodes.push(node);
 
         restart();
       }
-
-      function mousedownAdd() {
-        // var regretText = window.prompt("Enter your regret");
-        // var name = ...
-        var name = document.getElementById("username").value;
-        var regretText = document.getElementById("regret").value;
-
-        console.log("hey");
-        console.log(name);
-        console.log(regretText);
-
-        mousedownCanvas(name + " " + regreText);
-      }
-
-      // function mousedownCanvas() {
-      //   var inputText = window.prompt("I regret");
-      //   // var inputText = textregret;
-      //   var point = d3.mouse(this),
-      //     node = {
-      //       x: point[0],
-      //       y: point[1],
-      //       text: "I regret " + inputText + " - Name"
-      //     },
-      //     n = nodes.push(node);
-
-      //   restart();
-      // }
 
       function tick() {
         link
@@ -246,6 +203,33 @@ export default {
           .attr("cy", function(d) {
             return d.y;
           });
+      }
+
+      function renderResult(categoryIndex) {
+        node = node.data(nodes);
+
+        //dots style
+        node
+          .enter()
+          .insert("circle", ".cursor")
+          .attr("class", "node")
+          .attr("regret", "abc")
+          .attr("r", 5)
+          // color
+          .style("fill", function(d, i) {
+            return fill(categoryIndex & 7);
+          })
+          .style("stroke", function(d, i) {
+            return d3.rgb(fill(categoryIndex & 7)).brighter(1);
+          })
+          .style("stroke-width", 1.5)
+          .on("mouseover", mouseover)
+          .on("mouseout", mouseout);
+        // .on("mousedown", mousedownNode);
+
+        node.exit().remove();
+
+        force.start();
       }
 
       function restart() {
