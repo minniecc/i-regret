@@ -374,7 +374,7 @@ rect {
   > div {
     position: fixed;
     background: white;
-    box-shadow: 0px 0px 15px 0px rgba(#000000, 0.3);
+    box-shadow: 0px 0px 15px 0px rgba(black, 0.3);
     padding: 30px 15px;
     /* Width of popup can be changed */
     width: 70%;
