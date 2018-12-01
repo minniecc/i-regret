@@ -14,14 +14,14 @@
           <!-- NAME INPUT -->
           <div class="form">
             <label for="name">Name</label>
-            <input type="name" id="username" name="name" placeholder="annonymous">
+            <input type="name" id="username" name="name" placeholder="anonymous">
           </div>
 
           <!-- REGRET TEXT INPUT -->
           <div class="form">
             <label for="textregret">I regret ...</label>
             <!-- <input type="text" class="textregret" name="textregret"> -->
-            <input type="text" maxlength="50" id="regret" ng-model="post">
+            <input type="text" maxlength="100" id="regret" ng-model="post">
           </div>
 
           <!-- CATEGORY -->
@@ -155,17 +155,43 @@ export default {
         var categoryText = document.getElementById("category");
         var categoryIndex = categoryText.selectedIndex;
 
-        console.log(categoryText.value, categoryIndex);
+        var categoryColor = "#3478AF";
+        switch (categoryIndex) {
+          case 1:
+            categoryColor = "#3478AF";
+            break;
+          case 2:
+            categoryColor = "#F08637";
+            break;
+          case 3:
+            categoryColor = "#4F9D3C";
+            break;
+          case 4:
+            categoryColor = "#C63931";
+            break;
+          case 5:
+            categoryColor = "#8B6AAC";
+            break;
+          case 6:
+            categoryColor = "#85584F";
+            break;
+          case 7:
+            categoryColor = "#CE7EB4";
+            break;
+          case 8:
+            categoryColor = "#7F7F7F";
+            break;
+        }
 
         var point = d3.mouse(this),
           node = {
             x: point[0],
             y: point[1],
-            text: "I regret " + regretText + " - Name"
+            text: "I regret " + regretText + " - " + name
           },
           n = nodes.push(node);
 
-        renderResult(categoryIndex);
+        renderResult(categoryColor);
       }
 
       function mousedownCanvas() {
@@ -205,7 +231,7 @@ export default {
           });
       }
 
-      function renderResult(categoryIndex) {
+      function renderResult(categoryColor) {
         node = node.data(nodes);
 
         //dots style
@@ -216,12 +242,8 @@ export default {
           .attr("regret", "abc")
           .attr("r", 5)
           // color
-          .style("fill", function(d, i) {
-            return fill(categoryIndex & 7);
-          })
-          .style("stroke", function(d, i) {
-            return d3.rgb(fill(categoryIndex & 7)).brighter(1);
-          })
+          .style("fill", categoryColor)
+          .style("stroke", categoryColor)
           .style("stroke-width", 1.5)
           .on("mouseover", mouseover)
           .on("mouseout", mouseout);
