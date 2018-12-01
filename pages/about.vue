@@ -79,9 +79,12 @@ h2 {
 }
 
 .box {
-  background-color: black;
+  background-color: #3c3c3b;
   padding: 20px;
   margin: 30px auto;
+  &:hover {
+    box-shadow: 5px 5px 10px #98c1d9;
+  }
   > p {
     color: white;
     text-align: left;

@@ -8,7 +8,7 @@
       <h2>1. add your regret</h2>
       <div class="col-12 pic pic1"></div>
       <div class="abouttext col-12 _tal-l">
-        <p>Click anywhere on the black area to start adding your regret. You can either add your name or remain annonymous.</p>
+        <p>Fill in the form on the left. You can either add your name or remain anonymous.</p>
       </div>
     </div>
     <!-- 2 -->
@@ -16,7 +16,7 @@
       <h2>2. choose category</h2>
       <div class="col-12 pic pic2"></div>
       <div class="abouttext col-12 _tal-l">
-        <p>After entering your regret, do not forget to choose its category. Regrets are separated by colours so you can see which category people regret the most before they die or even while they are still living.</p>
+        <p>After entering your name and regret, do not forget to choose its category. Regrets are separated by colours so you can see which category people regret the most before they die or even while they are still living. Click add to submit.</p>
       </div>
     </div>
     <!-- 3 -->
@@ -84,9 +84,12 @@ h2 {
 }
 
 .box {
-  background-color: black;
+  background-color: #3c3c3b;
   padding: 20px;
   margin: 30px auto;
+  &:hover {
+    box-shadow: 5px 5px 10px #98c1d9;
+  }
   > p {
     color: white;
     text-align: left;

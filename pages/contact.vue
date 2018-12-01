@@ -80,12 +80,12 @@ h2 {
 }
 
 .box {
-  background-color: black;
+  background-color: #3c3c3b;
   padding: 20px;
 }
 
 .socialcontact {
-  background: black;
+  background: #3c3c3b;
   text-align: center;
   margin: 30px auto 50px auto;
   padding: 10px;
