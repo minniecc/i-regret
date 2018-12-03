@@ -8,9 +8,9 @@
     :class="{'has-shadow animate sticky _bgcl-white': $store.state.menuSticky && !$store.state.isMobileMenuActive}"
   >
     <div class="container">
-      <div class="menu-container">
+      <div class="menu-container _jtfct-spbtw">
         <!-- Branding -->
-        <nuxt-link id="branding" class="_w-512px _bgs-ct _bgrp-nrp logo" :to="localePath('index')"></nuxt-link>
+        <nuxt-link id="branding" class="_bgpst-l _bgs-ct _bgrp-nrp logo" :to="localePath('index')"></nuxt-link>
 
         <!-- Menu -->
         <nav
@@ -127,6 +127,7 @@ header {
 
 .logo {
   height: 100px;
+  width: 300px;
   background-image: url("~assets/images/i-regret-logo-black.png");
 }
 

@@ -1,27 +1,41 @@
 <template>
   <div class="_w-100pct container">
     <!-- filters -->
-    <div class="row filter col-lg-10 col-md-10 col-sm-12 col-12 _fs-6 _jtfct-spbtw">
+    <div class="row _mg-at _pd-10px col-lg-10 col-md-10 col-sm-12 col-12 _fs-6 _jtfct-spbtw">
       <div class="_dp-ilb filter" v-for="(item, i) in regretCategories" :key="i">
         <i class="fas fa-circle" :style="`color: ${item.color}`"></i>
         <span>{{ item.title }}</span>
       </div>
     </div>
 
-    <div class="row playarea">
-      <div class="col col-lg-2 col-md-2 col-sm-2 col-2 _dp-b _mg-at _tal-ct popup">
+    <div class="row playarea _dp-f">
+      <div class="col col-lg-2 col-md-12 col-sm-12 col-12 _dp-b _mg-at _tal-ct popup">
         <form action="#" @submit.prevent>
           <!-- NAME INPUT -->
           <div class="form">
-            <label for="name">Name</label>
-            <input type="name" id="username" name="name" placeholder="anonymous">
+            <label for="name">Name:</label>
+            <br>
+            <input
+              type="name"
+              class="_w-100pct-lg _w-100pct-md _w-80pct-sm _w-80pct"
+              id="username"
+              name="name"
+              placeholder="anonymous"
+            >
           </div>
 
           <!-- REGRET TEXT INPUT -->
           <div class="form">
             <label for="textregret">I regret ...</label>
-            <!-- <input type="text" class="textregret" name="textregret"> -->
-            <input type="text" maxlength="140" id="regret" ng-model="post">
+            <br>
+            <input
+              type="text"
+              class="_w-100pct-lg _w-100pct-md _w-80pct-sm _w-80pct"
+              maxlength="140"
+              id="regret"
+              ng-model="post"
+              placeholder="your regret here"
+            >
           </div>
 
           <!-- CATEGORY -->
@@ -29,7 +43,7 @@
             <label for="regretcategory">Category</label>
             <div class="bio-field -info">
               <div class="bio-select">
-                <select id="category">
+                <select id="category" class="_w-100pct-lg _w-100pct-md _w-80pct-sm _w-80pct">
                   <option disabled>Select dropdown</option>
                   <option v-for="(item, i) in regretCategories" :key="i">{{ item.title }}</option>
                 </select>
@@ -305,13 +319,13 @@ export default {
 
 <style lang="scss" scoped>
 .filter {
-  margin: auto 0 auto auto;
+  margin: auto;
   padding: 10px;
   font-family: "Work Sans", sans-serif;
 }
 
 .playarea {
-  margin-bottom: 50px;
+  margin-bottom: 40px;
   font-family: "Work Sans", sans-serif;
   background-color: #3c3c3b;
 }
@@ -409,6 +423,7 @@ input {
   border-radius: 5px;
   border: none;
   height: 30px;
+  // width: 100%;
 }
 
 select {
