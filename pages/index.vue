@@ -54,7 +54,15 @@
   </div>
 </template>
 
+
 <script>
+// Note: 1. import firebase จากไฟล์ที่เราสร้างด้านบน ใช้ @/services หมายถึง rootDir
+import firebase from "@/services/firebase";
+
+// Note: 2. สร้าง instance ของ firebase ชื่อ ref
+// โดยที่เชื่อมกับ collection ชื่อว่า regrets ดู collection ในหน้า database ของ firebase console ได้ครับ
+const ref = firebase.db.collection("regrets");
+
 export default {
   data: () => ({
     regretCategories: [
@@ -107,6 +115,9 @@ export default {
 
       var _nodes = d3.range(0).map(Object);
 
+      // Note: 3. สร้างตัวแปรชื่อ that มาเก็บค่า this ไว้ก่อน เพราะว่า เวลาเรียกจาก on event ของพวก DOM กับ function ใน vue ค่า this จะ refer ตามที่มันถูกเรียก ดูเรื่อง this, closure, hoisting เรื่อง JavaScript เพิ่มเติม
+      const that = this;
+
       var force = d3.layout
         .force()
         .size([width, height])
@@ -122,7 +133,8 @@ export default {
         .attr("height", height)
         .on("mousedown", mousedownCanvas);
 
-      d3.select("#add").on("mousedown", mousedownAdd);
+      // Note: 4 เปลี่ยน handle เป็น onclick และชื่อฟังค์ชันเป็น submit เพื่อให้มันสื่อนะครับ เนื่องจากว่าเป็น button ควรใช้ onclick ดีกว่า
+      d3.select("#add").on("click", submit);
 
       var nodes = force.nodes(),
         links = force.links(),
@@ -133,7 +145,6 @@ export default {
 
       //hover to show tooltip
       function mouseover(e) {
-        console.log(e);
         var text = e.text;
         tooltip
           .style("top", event.clientY - 250 + "px")
@@ -149,49 +160,44 @@ export default {
           .style("opacity", 0);
       }
 
-      function mousedownAdd() {
+      function submit() {
         var name = document.getElementById("username").value;
         var regretText = document.getElementById("regret").value;
         var categoryText = document.getElementById("category");
         var categoryIndex = categoryText.selectedIndex;
 
-        var categoryColor = "#3478AF";
-        switch (categoryIndex) {
-          case 1:
-            categoryColor = "#3478AF";
-            break;
-          case 2:
-            categoryColor = "#F08637";
-            break;
-          case 3:
-            categoryColor = "#4F9D3C";
-            break;
-          case 4:
-            categoryColor = "#C63931";
-            break;
-          case 5:
-            categoryColor = "#8B6AAC";
-            break;
-          case 6:
-            categoryColor = "#85584F";
-            break;
-          case 7:
-            categoryColor = "#CE7EB4";
-            break;
-          case 8:
-            categoryColor = "#7F7F7F";
-            break;
+        // Note: 5. ลบที่ handle switch case ออกไป และใช้ access ค่าจากตัวแปรที่ถูกสร้างไว้แล้ว
+        // โดยปกติ จะใช้ this.regretCategories เพื่อเข้าถึง data แต่ว่ามันถูกเรียกจาก DOM event ตัว this เลยกลายเป็น <button id="add"></button> แทน ก็เลยใช้ that ที่เก็บไว้มาแทน (that = vue object)
+        const category = that.regretCategories[categoryIndex - 1];
+
+        // Note: 6. อันนี้เพิ่มให้ กรณี input field เป็นว่างๆ ให้มัน alert และไม่ต้องเซฟค่า
+        if (name === "" && regretText === "") {
+          window.alert("Please input your regret text");
+          return;
         }
 
         var point = d3.mouse(this),
           node = {
             x: point[0],
             y: point[1],
-            text: "I regret " + regretText + " - " + name
+            text: "I regret " + regretText + " - " + name,
+            color: category.color
           },
           n = nodes.push(node);
 
-        renderResult(categoryColor);
+        // Note: 7. เพ่ิมข้อมูลลง firebase database
+        ref.add({
+          name,
+          content: regretText,
+          category: category.title,
+          color: category.color
+        });
+
+        renderResult(category.color);
+
+        // Note: 8. reset form หลัง submit
+        document.getElementById("username").value = "";
+        document.getElementById("regret").value = "";
       }
 
       function mousedownCanvas() {
@@ -257,35 +263,43 @@ export default {
       function restart() {
         node = node.data(nodes);
 
-        //dots style
+        // Note: 9. ตรงส่วน style('fill') และ style('stroke') ใช้ arrow function เพื่อให้มันดึงค่า key ที่ชื่อว่า color จาก node ออกมา แบบเต็มๆ จะเป็น .style('fill', function(data) { return data.color })
+        // ({ color }) => color คือ arrow function และมี destructuring object
+        // additional info : https://simonsmith.io/destructuring-objects-as-function-parameters-in-es6/
+
         node
           .enter()
           .insert("circle", ".cursor")
           .attr("class", "node")
           .attr("regret", "abc")
           .attr("r", 5)
-          // color
-          .style("fill", function(d, i) {
-            return fill(i & 7);
-          })
-          .style("stroke", function(d, i) {
-            return d3.rgb(fill(i & 7)).brighter(1);
-          })
+          .style("fill", ({ color }) => color)
+          .style("stroke", ({ color }) => color)
           .style("stroke-width", 1.5)
           .on("mouseover", mouseover)
           .on("mouseout", mouseout);
-        // .on("mousedown", mousedownNode);
-
         node.exit().remove();
-
         force.start();
       }
+
+      // Note: 10. เห็นว่า restart() ถูกเรียกตอนเริ่มและตอน add ก็เลยเพิ่มส่วนที่ดึงข้อมูลจาก firebase
+      // ref.get() จะได้เป็น Promise snapshot ต้องเข้าถึงด้วย res.docs และได้เป็น array จึงต้องลูปเพื่อดึงค่าจริงๆออกมา จากนั้นเอาค่าที่ได้ ไปใส่ใน nodes ด้วย nodes.push(data)
+      // เข้าถึงค่าใน firebase ด้วย doc.data()
+      ref.get().then(res => {
+        const regrets = res.docs.map(doc => {
+          nodes.push({
+            x: 0,
+            y: 0,
+            text: `I regret ${doc.data().content} - ${doc.data().name}`,
+            color: doc.data().color // ค่านี้ใส่ไปเพื่อให้ใน Note 9 เข้าถึงตัวแปร color ได้
+          });
+        });
+        restart();
+      });
     }
   }
 };
 </script>
-
-
 
 
 

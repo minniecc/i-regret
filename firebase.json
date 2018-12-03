@@ -1,14 +1,6 @@
 {
   "hosting": {
-    "public": "nuxt/dist",
-    "ignore": [
-      "firebase.json",
-      "**/.*",
-      "**/node_modules/**"
-    ],
-    "rewrites": [{
-      "source": "**",
-      "function": "ssrapp"
-    }]
+    "public": "dist",
+    "ignore": ["firebase.json", "**/.*", "**/node_modules/**"]
   }
 }

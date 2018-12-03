@@ -34,6 +34,7 @@
     "bowser": "^2.0.0-beta.3",
     "cookie": "^0.3.1",
     "express": "^4.15.3",
+    "firebase": "^5.6.0",
     "js-cookie": "^2.2.0",
     "nuxt-babel": "^0.1.2",
     "nuxt-edge": "2.2.0-25662130.e115890",
