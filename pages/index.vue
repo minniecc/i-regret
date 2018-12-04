@@ -60,7 +60,11 @@
 
       <!-- d3 -->
       <div class="col-10 _dp-b _mg-at regret">
-        <div id="d3">
+        <div
+          id="d3"
+          class="_jtfit-ct"
+          style="overflow-x: scroll; overflow-y: scroll; height: 600px;"
+        >
           <div id="tooltip"></div>
         </div>
       </div>
@@ -119,8 +123,8 @@ export default {
   mounted() {
     if (process.browser) {
       /* SVG frame creation */
-      var width = 960,
-        height = 500,
+      var width = 900,
+        height = 700,
         // color
         fill = d3.scale.category10();
       // fill = this.regretCategories.item.color();
@@ -185,7 +189,7 @@ export default {
         const category = that.regretCategories[categoryIndex - 1];
 
         // Note: 6. อันนี้เพิ่มให้ กรณี input field เป็นว่างๆ ให้มัน alert และไม่ต้องเซฟค่า
-        if (name === "" && regretText === "") {
+        if (regretText === "") {
           window.alert("Please input your regret text");
           return;
         }

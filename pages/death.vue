@@ -118,10 +118,10 @@ h2 {
 }
 
 .pic1 {
-  background-image: url("~assets/images/otherpic/death-story.png");
+  background-image: url("~assets/images/otherpic/deathstory.jpg");
 }
 .pic2 {
-  background-image: url("~assets/images/otherpic/deathstory.jpg");
+  background-image: url("~assets/images/otherpic/death-story.png");
 }
 </style>
 

@@ -49,12 +49,12 @@ module.exports = {
       {
         hid: "og:image",
         property: "og:image",
-        content: ``
+        content: `~assets/images/otherpic/i-regret-share.png`
       }
     ],
     script: [
       {
-        src: "http://d3js.org/d3.v3.min.js"
+        src: "https://d3js.org/d3.v3.min.js"
       },
       // {
       //   src: "https://d3js.org/d3-dispatch.v1.min.js"

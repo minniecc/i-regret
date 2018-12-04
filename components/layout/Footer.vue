@@ -25,7 +25,7 @@
             <!-- Twitter -->
             <a
               class="col-3"
-              href="https://twitter.com/intent/tweet?url=https%3A%2F%2Fi-regret.firebaseapp.com%2F&text=Let%27s+share+our+regrets%21&hashtags=i-regret"
+              href="https://twitter.com/intent/tweet?url=https%3A%2F%2Fi-regret.firebaseapp.com%2F&text=Let%27s+share+our+regrets%21&hashtags=iregret"
               target="_blank"
             >
               <i class="fab fa-twitter"></i>

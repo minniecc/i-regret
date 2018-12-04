@@ -71,17 +71,23 @@ export const actions = {
 
     commit("SET_PRIMARY_MENU", primaryMenu);
     commit("SET_FOOTER_MENU", footerMenu);
-    const isBrowserSupported = await dispatch(
-      "isBrowserSupported",
-      req.headers["user-agent"]
-    );
-    console.log(isBrowserSupported);
-    if (!isBrowserSupported)
-      return redirect(
-        app.localePath({
-          name: "unsupported"
-        })
-      );
+
+    // TODO:
+    // when running `yarn generate` that throw error headers is not defined
+    // because req.headers["user-agent"] : req allows on ssr only not for single page application.
+    // we decided to comment for build static folder, you can uncomment later.
+
+    // const isBrowserSupported = await dispatch(
+    //   "isBrowserSupported",
+    //   req.headers["user-agent"]
+    // );
+    // console.log(isBrowserSupported);
+    // if (!isBrowserSupported)
+    //   return redirect(
+    //     app.localePath({
+    //       name: "unsupported"
+    //     })
+    //   );
     return;
   }
 };
